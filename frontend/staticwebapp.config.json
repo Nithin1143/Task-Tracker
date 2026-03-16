@@ -1,0 +1,39 @@
+{
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
+      "route": "/health",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
+      "route": "/docs",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/redoc",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "cors": {
+    "allowedOrigins": [
+      "https://task-tracker-dusky-two.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:3000"
+    ]
+  },
+  "auth": {
+    "rolesSource": "/api/auth/roles"
+  },
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/api/*", "/health"]
+  }
+}
