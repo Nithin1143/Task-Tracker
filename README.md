@@ -116,6 +116,8 @@ All list endpoints return a structured envelope with pagination:
 | `DATABASE_URL`     | `postgresql://admin:adminpassword@localhost:5432/task_tracker` | PostgreSQL connection |
 | `AZURE_CLIENT_ID`  | *(empty)*                                         | Azure App Client ID          |
 | `AZURE_TENANT_ID`  | *(empty)*                                         | Azure Tenant ID              |
+| `ALLOWED_ORIGINS`  | `http://localhost:5173,http://localhost:3000`     | Comma-separated exact CORS origins |
+| `ALLOWED_ORIGIN_REGEX` | `^https://.*\\.vercel\\.app$`              | Regex for preview deployments |
 | `SECRET_KEY`       | `super_secret_key_change_in_production`            | JWT signing secret           |
 | `LOG_LEVEL`        | `INFO`                                            | Python log level             |
 
