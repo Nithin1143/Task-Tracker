@@ -57,6 +57,8 @@ def seed() -> None:
         ("Bob Manager", "manager@local.test", "Manager"),
         ("Carol Read Only", "user@local.test", "Read Only User"),
         ("Sri Sathvik", "srisathvikm@gmail.com", "Admin"),
+        ("Sri Manager", "srisathvikm+manager@gmail.com", "Manager"),
+        ("Sri ReadOnly", "srisathvikm+readonly@gmail.com", "Read Only User"),
     ]
     user_map: Dict[str, User] = {}
     for name, email, role_name in users_spec:
