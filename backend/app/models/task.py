@@ -39,3 +39,5 @@ class Task(Base, UUIDMixin, TimestampMixin):
     owner = relationship("User", foreign_keys=[owner_id], back_populates="owned_tasks")
     assignee = relationship("User", foreign_keys=[assigned_to], back_populates="assigned_tasks")
     project = relationship("Project", back_populates="tasks")
+    comments = relationship("Comment", back_populates="task", cascade="all, delete-orphan")
+    activity_logs = relationship("ActivityLog", back_populates="task", cascade="all, delete-orphan")

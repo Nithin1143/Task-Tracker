@@ -18,5 +18,5 @@ class Comment(Base, UUIDMixin):
     created_at = Column(DateTime(timezone=True), server_default=text("now()"), nullable=False)
 
     # Relationships
-    task = relationship("Task", backref="comments")
+    task = relationship("Task", back_populates="comments")
     author = relationship("User")

@@ -19,5 +19,5 @@ class ActivityLog(Base, UUIDMixin):
     created_at = Column(DateTime(timezone=True), server_default=text("now()"), nullable=False)
 
     # Relationships
-    task = relationship("Task", backref="activity_logs")
+    task = relationship("Task", back_populates="activity_logs")
     user = relationship("User")
