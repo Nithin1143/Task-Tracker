@@ -2,7 +2,7 @@
  * Axios-based API client with token injection.
  */
 
-import axios from 'axios';
+import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 const DEFAULT_API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
 
@@ -12,13 +12,13 @@ const normalizeApiBaseUrl = (rawBaseUrl?: string): string => {
   return value.endsWith('/api/v1') ? value : `${value}/api/v1`;
 };
 
-const apiClient = axios.create({
+const apiClient: AxiosInstance = axios.create({
   baseURL: normalizeApiBaseUrl(import.meta.env.VITE_API_BASE_URL),
   headers: { 'Content-Type': 'application/json' },
 });
 
 // ── Request interceptor: attach Bearer token ─────────────────────────────
-apiClient.interceptors.request.use((config) => {
+apiClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = localStorage.getItem('auth_token');
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -28,8 +28,8 @@ apiClient.interceptors.request.use((config) => {
 
 // ── Response interceptor: handle errors ──────────────────────────────────
 apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
+  (response: AxiosResponse) => response,
+  (error: AxiosError) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('auth_token');
     }
