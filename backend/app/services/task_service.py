@@ -118,16 +118,19 @@ class TaskService:
 
     @staticmethod
     def update_status(db: Session, task_id: UUID, new_status: TaskStatus, current_user: User) -> Task:
-        """PATCH /tasks/{id}/status – dedicated status-update endpoint."""
+        """PATCH /tasks/{id}/status – dedicated status-update endpoint.
+        
+        For Admins/Managers: can change any task status to any value.
+        For others (Read-Only Users): can only change status of tasks assigned to them.
+        """
         task = TaskService.get_task(db, task_id)
         roles = _role_names(current_user)
         old_status = task.status
 
+        # For non-Admin/Manager roles, ensure task is assigned to them
         if not (roles & {"Admin", "Manager"}):
             if task.assigned_to != current_user.id:
                 raise HTTPException(status_code=403, detail="You can only update tasks assigned to you")
-            if new_status != TaskStatus.COMPLETED:
-                raise HTTPException(status_code=403, detail="Read-only users can only mark tasks as completed")
 
         task.status = new_status
         db.commit()
