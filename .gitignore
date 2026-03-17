@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Deployment scripts (local use only)
+deploy-to-azure.ps1
+pre-deploy-check.ps1
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+.next/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Deployment guides (for reference, not needed)
+DEPLOYMENT_CHECKLIST.md
+DETAILED_DEPLOYMENT_PLAN.md
+EXECUTION_QUICK_GUIDE.md
+
+# Docker temp files
+.dockerignore
