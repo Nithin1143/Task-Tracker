@@ -1,20 +1,20 @@
 #!/usr/bin/env pwsh
 # ============================================================================
-# Task Tracker - Azure Deployment Script
+# Task Tracker - Azure Deployment Script (CORRECTED)
 # ============================================================================
 # Automated deployment to Azure for Python 3.11 + Node 25.8 stack
-# Prerequisites: Azure CLI must be installed and logged in
-# Run AFTER pre-deploy-check.ps1 passes all checks
+# Uses Free tier App Service (no quota issues)
+# Uses flexible-server for PostgreSQL
 # ============================================================================
 
 param(
     [string]$DatabasePassword = "",
-    [string]$Location = "eastus",
+    [string]$Location = "southeastasia",
     [string]$ResourceGroup = "task-tracker-rg",
-    [string]$AppServicePlan = "task-tracker-plan",
+    [string]$AppServicePlan = "task-tracker-plan-free",
     [string]$AppServiceName = "task-tracker-api",
     [string]$StaticAppName = "task-tracker-app",
-    [string]$DBServerName = "task-tracker-db-server"
+    [string]$DBServerName = "task-tracker-db-7892"
 )
 
 # ------- Helper Functions ---------------------------------------------------
