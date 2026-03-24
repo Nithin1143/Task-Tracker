@@ -17,7 +17,7 @@ class Settings(BaseSettings):
 
     ALLOWED_ORIGINS: str = "http://localhost:5173,http://localhost:3000,https://task-tracker-dusky-two.vercel.app,https://task-tracker-hiuy.vercel.app"
     ALLOWED_ORIGIN_REGEX: str = "^https://.*\\.vercel\\.app$"
-    AUTO_CREATE_TABLES: bool = False
+    AUTO_CREATE_TABLES: bool = True
 
     LOG_LEVEL: str = "INFO"
 
