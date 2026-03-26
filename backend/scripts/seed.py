@@ -52,13 +52,13 @@ def seed() -> None:
     db.commit()
 
     # ── Users ──────────────────────────────────────────────────────────
+    # Note: Your cloud user (e.g., sathvik@example.com) should be set as Admin separately
+    # This seed only creates test users for development
     users_spec = [
         ("Alice Admin", "admin@local.test", "Admin"),
         ("Bob Manager", "manager@local.test", "Manager"),
         ("Carol Read Only", "user@local.test", "Read Only User"),
-        ("Sri Sathvik", "srisathvikm@gmail.com", "Admin"),
-        ("Sri Manager", "srisathvikm+manager@gmail.com", "Manager"),
-        ("Sri ReadOnly", "srisathvikm+readonly@gmail.com", "Read Only User"),
+        ("Sathvik", "srisathvikm@gmail.com", "Admin"),
     ]
     user_map: Dict[str, User] = {}
     for name, email, role_name in users_spec:
@@ -82,7 +82,7 @@ def seed() -> None:
     admin = user_map["admin@local.test"]
     manager = user_map["manager@local.test"]
     read_only_user = user_map["user@local.test"]
-    sri = user_map["srisathvikm@gmail.com"]
+    sathvik = user_map["srisathvikm@gmail.com"]
 
     # ── Projects ───────────────────────────────────────────────────────
     projects_spec = [
@@ -91,7 +91,7 @@ def seed() -> None:
         ("Infrastructure Upgrade", "Migrate to Kubernetes", admin.id),
         ("Q3 Marketing Campaign", "Launch new product campaign", manager.id),
         ("Security Audit", "Annual penetration testing", admin.id),
-        ("Personal Workspace", "Track all my priority tasks", sri.id),
+        ("Personal Workspace", "Track all my priority tasks", sathvik.id),
         ("Sample Team Project", "Example project with tasks assigned to each role", manager.id),
     ]
     proj_map: Dict[str, Project] = {}
@@ -121,10 +121,10 @@ def seed() -> None:
         ("Review vendor proposals", "new", proj_map["Security Audit"].id, admin.id, manager.id),
         ("Update firewall rules", "completed", proj_map["Security Audit"].id, admin.id, read_only_user.id),
         ("Code vulnerability scan", "in_progress", proj_map["Security Audit"].id, admin.id, read_only_user.id),
-        ("Review UI updates", "new", proj_map["Personal Workspace"].id, sri.id, sri.id),
-        ("Fix backend bugs", "in_progress", proj_map["Personal Workspace"].id, sri.id, sri.id),
-        ("Prepare presentation", "not_started", proj_map["Personal Workspace"].id, sri.id, sri.id),
-        ("Approve Q3 budget", "new", proj_map["Q3 Marketing Campaign"].id, manager.id, sri.id),
+        ("Review UI updates", "new", proj_map["Personal Workspace"].id, sathvik.id, sathvik.id),
+        ("Fix backend bugs", "in_progress", proj_map["Personal Workspace"].id, sathvik.id, sathvik.id),
+        ("Prepare presentation", "not_started", proj_map["Personal Workspace"].id, sathvik.id, sathvik.id),
+        ("Approve Q3 budget", "new", proj_map["Q3 Marketing Campaign"].id, manager.id, sathvik.id),
         ("Collect business requirements", "new", proj_map["Sample Team Project"].id, manager.id, read_only_user.id),
         ("Set up project board", "in_progress", proj_map["Sample Team Project"].id, manager.id, manager.id),
         ("Approve architecture proposal", "not_started", proj_map["Sample Team Project"].id, admin.id, admin.id),
