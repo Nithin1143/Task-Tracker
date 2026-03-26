@@ -7,21 +7,17 @@
     "dev": "vite",
     "build": "node ./node_modules/typescript/bin/tsc && node ./node_modules/vite/bin/vite.js build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "test": "jest"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@azure/msal-browser": "^3.5.0",
     "@azure/msal-react": "^2.0.7",
-    "@types/recharts": "^1.8.29",
     "antd": "^5.11.4",
     "axios": "^1.6.2",
-    "framer-motion": "^12.36.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
-    "recharts": "^3.8.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
