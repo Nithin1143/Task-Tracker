@@ -29,7 +29,7 @@ const MainLayout: React.FC = () => {
       <aside className="shell-dock">
         <div className="dock-brand">
           <div className="dock-kicker">Control Center</div>
-          <h1 className="dock-title">T Tracker</h1>
+          <h1 className="dock-title">Task Tracker</h1>
           <div className="dock-sub">Plan. Track. Deliver.</div>
         </div>
         <Menu
