@@ -63,7 +63,10 @@ const TaskForm: React.FC<Props> = ({ open, task, projects, users, canAssign, onS
           <Input.TextArea rows={3} />
         </Form.Item>
         <Form.Item name="due_date" label="Due Date">
-          <DatePicker style={{ width: '100%' }} />
+          <DatePicker 
+            style={{ width: '100%' }}
+            disabledDate={(current) => current && current.isBefore(dayjs(), 'day')}
+          />
         </Form.Item>
         <Form.Item name="project_id" label="Project" rules={[{ required: true, message: 'Project is required' }]}>
           <Select

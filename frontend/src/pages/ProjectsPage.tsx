@@ -139,12 +139,23 @@ const ProjectsPage: React.FC = () => {
           <Row gutter={12}>
             <Col span={12}>
               <Form.Item name="start_date" label="Start Date">
-                <DatePicker style={{ width: '100%' }} />
+                <DatePicker 
+                  style={{ width: '100%' }}
+                  disabledDate={(current) => current && current.isBefore(dayjs(), 'day')}
+                />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item name="end_date" label="End Date">
-                <DatePicker style={{ width: '100%' }} />
+                <DatePicker 
+                  style={{ width: '100%' }}
+                  disabledDate={(current) => {
+                    if (!current) return false;
+                    const startDate = form.getFieldValue('start_date');
+                    const minDate = startDate || dayjs();
+                    return current.isBefore(minDate, 'day');
+                  }}
+                />
               </Form.Item>
             </Col>
           </Row>

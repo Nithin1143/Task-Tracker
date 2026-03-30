@@ -17,8 +17,9 @@ class _DueDateMixin(BaseModel):
 
     @model_validator(mode="after")
     def _due_date_not_in_past(self):
-        if hasattr(self, "due_date") and self.due_date is not None and self.due_date < date.today():
-            raise ValueError("due_date cannot be in the past")
+        if hasattr(self, "due_date") and self.due_date is not None:
+            if self.due_date < date.today():
+                raise ValueError("due_date cannot be in the past; must be today or a future date")
         return self
 
 
